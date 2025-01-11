@@ -113,6 +113,7 @@ Mariska & Rangga`;
         setStatus("Message copied to clipboard!");
       })
       .catch((err) => {
+        console.log(err);
         setStatus("Failed to copy the message.");
       });
   };
@@ -124,7 +125,7 @@ Mariska & Rangga`;
           Your Invitation
         </Label>
         <Textarea
-          onChange={(e) => handleInput}
+          onChange={() => handleInput}
           id="invitation"
           placeholder="Paste your invitation here."
         />
