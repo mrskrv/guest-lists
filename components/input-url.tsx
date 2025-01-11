@@ -24,8 +24,8 @@ export const InputUrl = () => {
       </p>
       <p>
         Tanpa mengurangi rasa hormat, perkenankan kami mengundang Kepada Yth
-        Bapak/Ibu/Saudara/i untuk hadir dan memberikan do'a restu pada acara
-        pernikahan kami.
+        Bapak/Ibu/Saudara/i untuk hadir dan memberikan do&apos;a restu pada
+        acara pernikahan kami.
       </p>
       <p>
         Pernikahan kami akan dilangsungkan pada hari Sabtu, tanggal{" "}
@@ -50,7 +50,7 @@ export const InputUrl = () => {
     </div>
   );
 
-  const handleInput = (e: { target: { value: any } }) => {
+  const handleInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     const val = e.target.value;
 
     // 1. Extract the URL using a regular expression
@@ -92,7 +92,6 @@ export const InputUrl = () => {
   };
 
   const handleCopy = () => {
-    const url = "https://wedding.rgdmprmd.com?to=yuki-and-family"; // Your URL
     const msg = `\_Bismillahirrahmanirrahim\_
 \_Assalamualaikum Warahmatullahi Wabarakatuh\_
 \nKepada Yth:
@@ -125,7 +124,7 @@ Mariska & Rangga`;
           Your Invitation
         </Label>
         <Textarea
-          onChange={handleInput}
+          onChange={(e) => handleInput}
           id="invitation"
           placeholder="Paste your invitation here."
         />
