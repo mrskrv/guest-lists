@@ -9,7 +9,7 @@ import { Button } from "@/components/ui/button";
 export const InputUrl = () => {
   const [extractedUrl, setExtractedUrl] = useState("");
   const [formattedName, setFormattedName] = useState("");
-  const [status, setStatus] = useState("");
+  const [status, setStatus] = useState(false);
   const messageStr = (
     <div className="text-xs space-y-2 border p-4 rounded-md">
       <p className="italic">
@@ -51,8 +51,9 @@ export const InputUrl = () => {
   );
 
   const handleInput = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+    setStatus(false);
+
     const val = e.target.value;
-    console.log(val);
 
     // 1. Extract the URL using a regular expression
     const urlRegex = /https:\/\/[^\s]+/;
@@ -87,7 +88,13 @@ export const InputUrl = () => {
         console.log("Extracted URL:", url);
         console.log("Formatted value:", formatted); // Output: "Yuki and Family"
         e.target.value = url;
+      } else {
+        setExtractedUrl("");
+        setFormattedName("");
       }
+    } else {
+      setExtractedUrl("");
+      setFormattedName("");
     }
   };
 
@@ -110,11 +117,11 @@ Mariska & Rangga`;
     navigator.clipboard
       .writeText(msg)
       .then(() => {
-        setStatus("Message copied to clipboard!");
+        setStatus(true);
       })
       .catch((err) => {
         console.log(err);
-        setStatus("Failed to copy the message.");
+        setStatus(false);
       });
   };
 
