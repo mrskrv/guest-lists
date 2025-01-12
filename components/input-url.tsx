@@ -50,8 +50,9 @@ export const InputUrl = () => {
     </div>
   );
 
-  const handleInput = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleInput = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     const val = e.target.value;
+    console.log(val);
 
     // 1. Extract the URL using a regular expression
     const urlRegex = /https:\/\/[^\s]+/;
@@ -83,11 +84,10 @@ export const InputUrl = () => {
         setExtractedUrl(url);
         setFormattedName(formatted);
 
+        console.log("Extracted URL:", url);
+        console.log("Formatted value:", formatted); // Output: "Yuki and Family"
         e.target.value = url;
       }
-
-      //   console.log("Extracted URL:", url);
-      //   console.log("Formatted value:", formatted); // Output: "Yuki and Family"
     }
   };
 
@@ -125,7 +125,7 @@ Mariska & Rangga`;
           Your Invitation
         </Label>
         <Textarea
-          onChange={() => handleInput}
+          onChange={handleInput}
           id="invitation"
           placeholder="Paste your invitation here."
         />
